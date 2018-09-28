@@ -7,6 +7,14 @@
 insensitiveEqual('hello', 'hello'); -> true
 insensitiveEqual('hello', 'Hello'); -> true
 insensitiveEqual('hello', 'world'); -> false
+
+```
+
+```js
+function insensitiveEqual (str1,str2) {
+  return str1.toUpperCase()===str2.toUpperCase() ? true : false;
+}
+insensitiveEqual('dawdaw', 'Hellow');
 ```
 
 ### 문제 2
@@ -17,6 +25,21 @@ insensitiveEqual('hello', 'world'); -> false
 ```
 leftPad('hello', 8); -> '   hello'
 leftPad('hello', 3); -> 'hello'
+```
+
+```js
+
+function lftPad(s,n) {
+  if (s,length < n) {
+    const spaceNum = n - s.length
+    return  ''.repeat(spaceNum) + s
+  }else {
+    return s
+  }
+}
+
+leftPad('hello',3)
+
 ```
 
 ### 문제 3
