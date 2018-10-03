@@ -29,12 +29,13 @@ leftPad('hello', 3); -> 'hello'
 
 ```js
 
-function lftPad(s,n) {
-  if (s,length < n) {
-    const spaceNum = n - s.length
-    return  ''.repeat(spaceNum) + s
-  }else {
-    return s
+function leftPad(s, n) {
+  const sLen = s.length;
+
+  if (sLen < n) {
+    return s.padStart(n);
+  } else {
+    return s;
   }
 }
 
@@ -45,6 +46,27 @@ leftPad('hello',3)
 ### 문제 3
 
 문자열을 입력받아, 문자열 안에 들어있는 모든 모음(a, e, i, o, u)의 갯수를 반환하는 함수를 작성하세요.
+
+```js
+function solution(str) {
+  let num = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    if (
+      str[i] === "a" ||
+      str[i] === "e" ||
+      str[i] === "i" ||
+      str[i] === "o" ||
+      str[i] === "u"
+    ) {
+      num += 1;
+    }
+  }
+  return num;
+}
+
+```
+
 
 ### 문제 4
 
@@ -58,6 +80,25 @@ countChar('tomato'); -> {t: 2, o: 2, m: 1, a: 1}
 ### 문제 5
 
 문자열을 입력받아 그 문자열이 회문(palindrome)인지 판별하는 함수를 작성하세요. (회문이란, '토마토', 'never odd or even'과 같이 뒤에서부터 읽어도 똑같이 읽히는 문자열을 말합니다.)
+
+```js
+function palindrome(str) {
+  
+  console.log(str);
+
+  for (let i =0; i<str.length; i++) {
+    const left= i;
+    const right = str.length - i;
+
+    if(str[left] !== str[right]) {
+      return false
+    }
+    return true
+  }
+}
+
+palindrome('toot');
+```
 
 ### 문제 6
 
@@ -79,16 +120,71 @@ removeDuplicates('tomato'); -> 'toma'
 removeDuplicates('bartender'); -> 'bartend'
 ```
 
+```js
+
+function removeDuplicates(s) {
+  let str = "";
+  for (let i = 0; i < s.length; i++) {
+    if (str.includes(s[i]) === false) {
+      str += s[i];
+    }
+  }
+  return str;
+}
+
+removeDuplicates('tomato');
+
+```
+
 ### 문제 8
 
 이메일 주소를 입력받아, 아이디 부분을 별표(`*`)로 가린 새 문자열을 반환하는 함수를 작성하세요.
 
 - 루프로 먼저 풀어보세요.
-- `split` 메소드를 이용해서 풀어보세요.
+
+```js
+
+const hide = input => {
+  let seen = false;
+  let memory = "";
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] === "@") {
+      seen = true;
+    }
+
+    if (seen) {
+      memory += input[i];
+    } else {
+      memory += "*";
+    }
+  }
+  return memory;
+};
+
+```
+
 
 ### 문제 9
 
 문자열을 입력받아, 대문자는 소문자로, 소문자는 대문자로 바꾼 결과를 반환하는 함수를 작성하세요.
+
+```js
+
+const swapCase = input => {
+  const tester = input.toUpperCase();
+  let memory = "";
+
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] === tester[i]) {
+      memory += input[i].toLowerCase();
+    } else {
+      memory += input[i].toUpperCase();
+    }
+  }
+  return memory;
+};
+
+```
 
 ### 문제 10
 
@@ -98,9 +194,35 @@ removeDuplicates('bartender'); -> 'bartend'
 
 문자열을 입력받아, 문자열 안에 들어있는 단어 중 가장 긴 단어를 반환하는 함수를 작성하세요. (문자열에 개행이 없다고 가정합니다.)
 
+
+```js
+
+function longGest (str) {
+
+  let arr = str.split(" ");
+  let max = 0;
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i].length > arr[max].length) {
+      max = i;
+    }
+  }
+  return arr[max];
+
+}
+
+longGest('one two three four five')
+
+```
+
 ### 문제 12
 
 문자열 `s`과 자연수 `n`을 입력받아, `s`의 첫 `n`개의 문자만으로 이루어진 새 문자열을 반환하는 함수를 작성하세요.
+
+```js
+
+
+
+```
 
 ### 문제 13
 
